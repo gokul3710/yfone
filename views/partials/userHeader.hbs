@@ -1,0 +1,46 @@
+<nav>
+    <div class="container nav-container">
+        <a class="navbar-brand" href="#">
+            <img src="/images/logo.png" alt="Your logo" title="Your logo" style="height:4rem;" />
+        </a>
+        <ul class="nav-menu">
+            <li><a href="/">HOME</a></li>
+            <li><a href="/products">PRODUCTS</a></li>
+            <li>
+                <a class="nav-link" href="/cart">CART
+                    {{!-- <span class="cartCount" id="cartCount">{{cartCount}}</span> --}}
+                </a>
+            </li>
+            {{#if user}}
+            <li class="nav-item">
+                <a class="nav-link" href="/orders">ORDERS</a>
+            </li>
+            {{/if}}
+            <li class="account-open">
+                {{#if user}}
+                <a style="text-transform: uppercase;">
+                    {{user.firstName}}</a>
+                <ul class="account-menu">
+                    <li><a href="/edit-user">MY ACCOUNT</a></li>
+                    <li><a href="/logout">LOGOUT</a></li>
+                </ul>
+
+                {{else}}
+                <a href="/login">ACCOUNT</a>
+                {{/if}}
+
+            </li>
+
+        </ul>
+        <button id="open-menu-btn"><img src="/icons/menu-black.png" alt="" srcset=""></button>
+        <button id="close-menu-btn"><img src="/icons/close-black.png" alt=""></button>
+    </div>
+</nav>
+
+<script>
+
+    document.querySelector('.account-open').addEventListener('click', () => {
+        document.querySelector('.account-menu').style.display = 'block';
+    })
+    
+</script>

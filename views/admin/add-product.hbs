@@ -1,0 +1,35 @@
+<section class="contact">
+    <div class="container contact-container">
+        <h2>Add Product</h2>
+        <form class="contact-form" id="submit-form" action="/admin/add-product" method="post"
+            enctype="multipart/form-data">
+            <div class="form-name">
+                <input type="text" name="Name" placeholder="Name" required>
+                <input type="text" name="Company" placeholder="Company Name" required>
+            </div>
+            <div class="form-name">
+                <input type="number" name="cPrice" placeholder="Current Price" required>
+                <input type="number" name="mPrice" placeholder="Max Price" required>
+            </div>
+            <div class="form-name">
+                <input type="date" style="width: 50%;" name="Date" placeholder="Released Date" required>
+                <input type="text" name="Display" placeholder="Display" required>
+            </div>
+            <div class="form-name">
+                <input type="number" name="ROM" placeholder="Storage" required>
+                <input type="number" name="RAM" placeholder="RAM" required>
+            </div>
+
+            <img src="" style="width: 100px;height:auto;" alt="" id="imgView">
+            <input type="file" name="Image" class="form-control" onchange="viewimage(event)">
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</section>
+
+<script>
+    function viewimage(event){
+        document.getElementById('imgView').src = URL.createObjectURL(event.target.files[0])
+    }
+</script>

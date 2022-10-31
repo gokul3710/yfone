@@ -1,0 +1,30 @@
+<section class="contact">
+    <div class="container edit-user-container">
+        <h2>Edit Account Details</h2>
+        <form class="edit-user-form" id="submit-form" action="/edit-user" method="post" >
+            <div class="payment-address">
+                <div class="form-name">
+                    <input type="text" name="firstName" placeholder="First Name" required value="{{user.firstName}}">
+                    <input type="text" name="lastName" placeholder="Last Name" required value="{{user.lastName}}">
+                </div>
+                <div class="form-name">
+                    <input type="email" name="Email" placeholder="Your Email Address" required value="{{user.Email}}">
+                    <input type="tel" name="Phone" placeholder="Phone Number" required value="{{user.Phone}}">
+                </div>
+                
+                
+                <input type="text" name="Address" placeholder="Address" required value='{{user.Address}}'>
+                <div class="form-name">
+                    <input type="text" name="City" placeholder="City" required value='{{user.City}}'>
+                    <input type="text" name="State" placeholder="State" required value='{{user.State}}'>
+                </div>
+                <div class="form-name">
+                    <input type="number" name="Pincode" placeholder="Pincode" required value='{{user.Pincode}}'>
+                    <input type="text" name="Country" placeholder="Country" value="India" >
+                </div>
+                <input type="text" name="userId" placeholder="Address" value="{{user._id}}" required hidden >
+                <button type="submit" class="btn btn-primary" >Submit</button>
+            </div>
+        </form>
+    </div>
+</section>

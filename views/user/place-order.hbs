@@ -1,0 +1,65 @@
+<section class="contact">
+    <div class="container payment-container">
+        <h2>Enter Delivery Address</h2>
+        <form class="contact-form payment-form" id="checkout-form" action="/place-order" method="post" >
+            <div class="payment-address">
+                <div class="form-name">
+                    <input type="text" name="firstName" placeholder="First Name" required value="{{user.firstName}}">
+                    <input type="text" name="lastName" placeholder="Last Name" required value="{{user.lastName}}">
+                </div>
+                <div class="form-name">
+                    <input type="email" name="Email" placeholder="Your Email Address" required value="{{user.Email}}">
+                    <input type="tel" name="Phone" placeholder="Phone Number" required value="{{user.Phone}}">
+                </div>
+                
+                
+                <input type="text" name="Address" placeholder="Address" required value='{{user.Address}}'>
+                <div class="form-name">
+                    <input type="text" name="City" placeholder="City" required value='{{user.City}}'>
+                    <input type="text" name="State" placeholder="State" required value='{{user.State}}'>
+                </div>
+                <div class="form-name">
+                    <input type="number" name="Pincode" placeholder="Pincode" required value='{{user.Pincode}}'>
+                    <input type="text" name="Country" placeholder="Country" value="India" >
+                </div>
+                <input type="text" name="userId" placeholder="Address" value="{{user._id}}" required hidden >
+            </div>
+            <div class="proceedtobuy">
+                <div class="checkout">
+                    <div class="total">
+                        <h4>Total Amount (<span id="total-quantity">{{total.totalQuantity}}</span> items):<span
+                                id="totalValue">₹{{total.totalPrice}}</span></h4>
+                    </div>
+                    <div class="payment-method">
+                        <p>Select Payment Method</p>
+                        <input type="radio" id="COD" name="payment-method" value="COD" required>
+                        <label for="COD">COD</label><br>
+                        <input type="radio" id="Online-Payment" name="payment-method" value="Online Payment">
+                        <label for="Online-Payment">Online Payment</label><br>
+                    </div>
+                    <button class="delete-btn">
+                        <p>Proceed to Buy</p>
+                    </button>
+                    <h5>Safe and Secure Payments.Easy returns.100% Authentic products.</h5>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<script>
+    $('#checkout-form').submit((e)=>{
+        e.preventDefault()
+        $.ajax({
+            url: '/place-order',
+            method:'post',
+            data:$('#checkout-form').serialize(),
+            success:(response)=>{
+                alert('Your order has been successfully added')
+                if(response.status){
+                    location.href='/orders'
+                }
+            }
+        })
+    })
+</script>

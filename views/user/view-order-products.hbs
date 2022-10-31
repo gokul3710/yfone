@@ -1,0 +1,21 @@
+<section class="products">
+    <div class="container products-container">
+        {{#each products}}
+        <a href='/product?id={{this.product._id}}'>
+            <article class="product">
+                <div class="product-image">
+                    <img src="/product-images/{{this.product._id}}.png" alt="">
+                </div>
+                <div class="product-info">
+                    <div class="product-info-title">
+                        <h4>{{this.product.Company}} {{this.product.Name}} ({{this.RAM}} GB RAM, {{this.product.ROM}} GB
+                            Storage)</h4>
+                        <h4 class="mrp">MRP : ₹ {{this.product.cPrice}} <span>₹ {{this.product.mPrice}}</span></h4>
+                        {{!-- <p>({{this.RAM}} GB RAM, {{this.ROM}} GB Storage)</p> --}}
+                    </div>
+                </div>
+            </article>
+        </a>
+        {{/each}}
+    </div>
+</section>

@@ -1,0 +1,33 @@
+
+<section>
+    <div class="container order-container">
+        <table style="margin-top: 5rem;" >
+            {{#if allUsers}}
+            <thead>
+                <tr>
+                    <th scope="col">First name</th>
+                    <th scope="col">last Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone No.</th>
+                </tr>
+            </thead>
+            {{/if}}
+            <tbody>
+                {{#each allUsers}}
+                <tr>
+                    <th scope="row">{{this.firstName}}</th>
+                    <td scope="row">{{this.lastName}}</td>
+                    <td scope="row">{{this.Address}} <br> {{this.City}},{{this.State}} <br> Pincode : {{this.Pincode}}</td>
+                    <td scope="row">{{this.Email}}</td>
+                    <td scope="row">{{this.Phone}}</td>
+                    <td scope="row">
+                        <a href="/delete-user?id={{this._id}}" class="btn btn-primary">Delete User</a>
+                    </td>
+                </tr>
+                
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</section>

@@ -1,0 +1,111 @@
+<section>
+    <div class="container cart-container">
+        <div class="shopping-cart">
+            <!-- Title -->
+            <div class="title">
+                Shopping Bag
+            </div>
+
+            <!-- Product #1 -->
+            {{#each cartProducts}}
+            <div id="cart{{this.product._id}}" class="item">
+
+                <div class="image">
+                    <img src="/product-images/{{this.product._id}}.png" alt="" />
+                </div>
+
+                <div class="description">
+                    <span>
+                        <h4>{{this.product.Company}} {{this.product.Name}} ({{this.product.RAM}} GB RAM,
+                            {{this.product.ROM}} GB Storage)</h4>
+                    </span>
+                    <span>
+                        <h5>Released on {{this.product.Date}}</h5>
+                    </span>
+                    <span>
+                        <h5>Size name: {{this.product.RAM}} GB + {{this.product.ROM}} GB</h5>
+                    </span>
+                    {{!-- <span>
+                        <h5>Display: {{this.product.Display}} inch</h5>
+                    </span> --}}
+                    <button onclick="removeProduct('{{this._id}}','{{this.product._id}}','{{../user._id}}')"
+                        class="delete-btn">Remove <img class="icon" src="/icons/delete-secondary.png" alt=""></button>
+                </div>
+
+                <div class="quantity">
+                    {{#if this.disabled}}
+                    <button class="minus-btn" type="button" name="button"
+                        onclick="changeQuantity('{{this._id}}','{{this.product._id}}',-1)" disabled>
+                        <img class="icon" src="/icons/minus.png" alt="">
+                    </button>
+                    {{else}}
+                    <button class="minus-btn" type="button" name="button"
+                        onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1)">
+                        <img class="icon" src="/icons/minus.png" alt="">
+                    </button>
+                    {{/if}}
+                    <input id="{{this.product._id}}" type="text" name="name" value="{{this.quantity}}" readonly="readonly">
+                    <button class="plus-btn" type="button" name="button"
+                        onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',1)">
+                        <img class="icon" src="/icons/plus.png" alt="">
+                    </button>
+                </div>
+                <div class="price">
+                    ₹ {{this.product.cPrice}}
+                </div>
+
+            </div>
+            {{/each}}
+
+        </div>
+        <div class="proceedtobuy">
+            <div class="checkout">
+                <h5>You are just one step away from placing the order!</h5>
+                <div class="total">
+                    <h4>Total Amount (<span id="total-quantity">{{total.totalQuantity}}</span> items):<span
+                            id="totalValue">₹{{total.totalPrice}}</span></h4>
+                </div>
+                <a href="/place-order" class="delete-btn">
+                    <p>Proceed to Buy</p>
+                </a>
+                <h5>Safe and Secure Payments.Easy returns.100% Authentic products.</h5>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="products">
+    <h4>Other Products You Might Like</h4>
+    <div class="container cart-products-container">
+        {{#each products}}
+        {{#if cart}}
+        {{else}}
+        <a href='/product?id={{this._id}}'>
+            <article class="product product{{this._id}}">
+                <div class="product-image">
+                    <img src="/product-images/{{this._id}}.png" alt="">
+                </div>
+                <div class="product-info">
+                    <div class="product-info-title">
+                        <h4>{{this.Company}} {{this.Name}} ({{this.RAM}} GB RAM, {{this.ROM}} GB Storage)</h4>
+                        <h4 class="mrp">MRP : ₹ {{this.cPrice}}</h4>
+                        {{!-- <p>({{this.RAM}} GB RAM, {{this.ROM}} GB Storage)</p> --}}
+                    </div>
+                </div>
+                <div class="cart">
+                    {{#if this.cart}}
+                    <button class="cartIcon{{this._id}}"><img src="/icons/shopping-cart (1).png" alt=""></button>
+                    {{else}}
+                    <button class="cartIcon{{this._id}}"><img src="/icons/shopping-cart.png" alt=""></button>
+                    {{/if}}
+                </div>
+            </article>
+        </a>
+        {{/if}}
+        {{/each}}
+    </div>
+</section>
+
+<script>
+
+</script>

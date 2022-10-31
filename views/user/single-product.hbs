@@ -1,0 +1,79 @@
+<section class="single-product" style="padding-top:5rem;padding-bottom:3rem;">
+    <div class="container single-product-container">
+        <div class="single-product-image">
+            <img src="/product-images/{{product._id}}.png" alt="">
+            <div class="all-images">
+                <img src="/product-images/{{product._id}}.png" alt="">
+                <img src="/product-images/{{product._id}}.png" alt="">
+                <img src="/product-images/{{product._id}}.png" alt="">
+                <img src="/product-images/{{product._id}}.png" alt="">
+            </div>
+
+        </div>
+        <div class="images-change-arrows">
+            <img class="to-left" src="/icons/left-arrow.png" alt="">
+            <img class="to-right" src="/icons/right-arrow.png" alt="">
+        </div>
+        <div class="single-product-details">
+            <div class="single-product-title">
+                <h4>{{product.Company}}</h4>
+                <h3>{{product.Company}} {{product.Name}} ({{product.RAM}} GB RAM, {{product.ROM}} GB)</h3>
+            </div>
+            <div class="single-product-description">
+                <h5>Display: {{product.Display}} Inch<br>
+                    Memory: {{product.RAM}} GB RAM , {{product.ROM}} GB Internal Storage<br>
+                    Processor: 12MP + 12MP + 12MP | 12MP Front Camera <br>
+                    Camera: 12MP + 12MP + 12MP | 12MP Front Camera <br>
+                    Battery: 4400 mAh Lithium-ion Battery <br>
+                    Processor: A15 Bionic Chip Processor</h5>
+            </div>
+            <div class="single-product-price">
+                <h4>MRP : ₹ {{product.cPrice}} <span>₹ {{product.mPrice}}</span></h4>
+            </div>
+            <div class="add-to-cart">
+                {{#if product.cart}}
+                <a href="/cart"
+                    class="btn cart-btn cartButton{{product._id}}" style="background-color: transparent;color: rgb(0, 0, 0);border-color: rgb(0, 0, 0);">
+                    Added to Cart
+                </a>
+                {{else}}
+                <button onclick="addToCart('{{product._id}}','{{../user._id}}')"
+                    class="btn cart-btn cartButton{{product._id}}">
+                    Add to Cart
+                </button>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="products" style="padding-top: 3rem;border-top: 1px solid var(--color-primary);">
+    <h2>OTHER PRODUCTS FROM <span style="text-transform: uppercase;">{{product.Company}}</span></h2>
+    <div class="container products-container">
+        {{#each categoryProducts}}
+        <article class="product">
+            <a href='/product?id={{this._id}}'>
+                <div class="product-image">
+                    <img src="/product-images/{{this._id}}.png" alt="">
+                </div>
+            </a>
+            <div class="product-info">
+                <a href='/product?id={{this._id}}'>
+                    <div class="product-info-title">
+                        <h4>{{this.Company}} {{this.Name}} ({{this.RAM}} GB RAM, {{this.ROM}} GB Storage)</h4>
+                        <h4 class="mrp">MRP : ₹ {{this.cPrice}} <span>₹ {{this.mPrice}}</span></h4>
+                    </div>
+                </a>
+            </div>
+            <div class="cart">
+                {{#if this.cart}}
+                <button class="cartIcon{{this._id}}"><img src="/icons/shopping-cart (1).png" alt=""></button>
+                {{else}}
+                <button class="cartIcon{{this._id}}" onclick="addToCart('{{this._id}}','{{../user._id}}')"><img
+                        src="/icons/shopping-cart.png" alt=""></button>
+                {{/if}}
+            </div>
+        </article>
+        {{/each}}
+    </div>
+</section>

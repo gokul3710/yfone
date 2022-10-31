@@ -1,0 +1,35 @@
+
+<section>
+    <div class="container order-container">
+        <table style="margin-top: 5rem;" >
+            {{#if orders}}
+            <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Order Status</th>
+                </tr>
+            </thead>
+            {{/if}}
+            <tbody>
+                {{#each orders}}
+                <tr>
+                    <th scope="row">{{this.day}} <br> <small>{{this.time}}</small></th>
+                    <td scope="row">{{this.deliveryDetails.Name}}</td>
+                    <td scope="row">{{this.deliveryDetails.Address}}</td>
+                    <td scope="row">{{this.totalItems}} Items</td>
+                    <td scope="row">{{this.totalAmount}}</td>
+                    <td scope="row">{{this.status}}</td>
+                    <td scope="row">
+                        <a href="/view-order-products?id={{this._id}}" class="btn btn-primary">View Products</a>
+                    </td>
+                </tr>
+                
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</section>
