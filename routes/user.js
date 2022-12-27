@@ -15,9 +15,7 @@ const verifyLogin = (req,res,next)=>{
 }
 
 const verifyAdmin = (req,res,next)=>{
-  if(req.session.user.Email === "h@h.com"){
-    console.log(admin);
-     req.session.user.admin = true
+  if(req.session.user.admin){
     next()
   }else{
     res.redirect('/')

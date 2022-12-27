@@ -6,8 +6,7 @@ var userHelpers= require('../helpers/user-helpers')
 
 
 const verifyAdmin = (req,res,next)=>{
-  if(req.session.user.Email === "h@h.com"){
-    req.session.user.admin = true
+  if(req.session.user.admin){
     next()
   }else{
     res.redirect('/')
