@@ -23,36 +23,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
-
-
-
-//-momery unleaked---------
-app.set('trust proxy', 1);
-
-app.use(session({
-cookie:{
-    secure: true,
-    maxAge:60000000
-       },
-// store: new RedisStore(),
-secret: 'secret',
-saveUninitialized: true,
-resave: false
-}));
-
-app.use(function(req,res,next){
-if(!req.session){
-    return next(new Error('Oh no')) //handle error
-}
-next() //otherwise continue
-});
-
+app.use(session({secret:'key',cookie:{maxAge:60000000}}))
 app.use((req,res,next)=>{
   res.header('Cache-Control','no-cache,private,no-Store,must-revalidate,max-scale=0,post-check=0,pre-check=0');
   next();
 })
-
-
 db.connect((err)=>{
   if(err)
   console.log('Error'+err)
